@@ -1,6 +1,6 @@
 {
   "engines": {
-      "node": "6.9.1",
+      "node": "6.9.1"
   },
   "name": "azure-sails",
   "private": true,
