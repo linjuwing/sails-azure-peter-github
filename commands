@@ -1,0 +1,15 @@
+curl -L https://aka.ms/InstallAzureCli | bash
+azure appservice web deployment user set --user-name peter-azure-sailsjs --password Ab123456
+az appservice web deployment user set --user-name peter-azure-sailsjs --password Ab123456
+az appservice list-locations
+az group create --location "North Europe" --name my-sailsjs-app-group
+az appservice plan create --name my-sailsjs-appservice-plan --resource-group my-sailsjs-app-group --sku FREE
+az appservice web create --name azure-sails-peter --resource-group my-sailsjs-app-group --plan my-sailsjs-appservice-plan
+az appservice web source-control config-local-git --name azure-sails-peter --resource-group my-sailsjs-app-group
+git remote add azure https://peter-azure-sailsjs@azure-sails-peter.scm.azurewebsites.net/azure-sails-peter.git
+git push azure master
+vim package.json
+gst
+gci -a -m "update package.json"
+git push azure master
+az appservice web browse --name azure-sails-peter --resource-group my-sailsjs-app-group
