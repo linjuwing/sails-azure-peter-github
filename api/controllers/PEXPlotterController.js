@@ -170,6 +170,7 @@ module.exports = {
 		let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
 		let value = startingStr + random + "	192	" + now + endingStr
 
+		res.type('text/xml');
 		return res.ok(value);
 	}
 };
