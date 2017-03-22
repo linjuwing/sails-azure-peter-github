@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+
+<% include head.ejs %>
+
+<body>
+
+<!--contents go here-->
+<div style="margin-top: 68px" >
+
+	<span id="Connector1"
+          ConnectedImageID="Connector1_ConnectedImageUrl"
+          DisconnectedImageID="Connector1_DisconnectedImageUrl" style="display:inline-block;height:12px;width:325px;">
+        <input name="Connector1$ctl00" type="hidden" ied="Connector1_ctl00" valu="29	0	False	-30	192	1490145918157	0.0.Y	Value	0	192	8.04550560842514	192	1490145921114	0.1.Y	Value	1	192	492.698669433594	192	1490145921114	0.2.Y	Value	2	192	68.5516204833984	192	1490145921114	0.3.Y	Value	3	192	1	1	False" />
+    </span>
+
+    <span id="PEXPlotter1"
+          name="pex1"
+          dancertooltip=""
+          notconnectedtooltip="Not connected to OPC server"
+          dancercontrol="True" style="display:inline-block;font-family:Tahoma;font-size:Medium;font-style:italic;height:800px;width:1200px;">
+<div id="PEXPlotter1_chartdiv" props="<%=JSON.stringify(defaultProps)%>" style="width:1200px;height:800px;">
+
+</div>
+    </span>
+
+
+    <span id="Track1"
+          dancertooltip=""
+          notconnectedtooltip="Not connected to OPC server"
+          dancercontrol="True" style="display:inline-block;height:40px;width:150px;">
+
+    </span>
+
+    <span id="HDAConnector1" style="display:inline-block;height:16px;width:150px;"></span>
+
+</div>
+
+<% include scripts.ejs %>
+</body>
+</html>

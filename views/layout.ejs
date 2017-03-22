@@ -30,6 +30,11 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/pexplotter/jqplotter.css">
+    <link rel="stylesheet" href="/styles/pexplotter/jquery-ui.css">
+    <link rel="stylesheet" href="/styles/pexplotter/jquery-ui.min.css">
+    <link rel="stylesheet" href="/styles/pexplotter/jquery.jqChart.css">
+    <link rel="stylesheet" href="/styles/pexplotter/jquery.jqRangeSlider.css">
     <!--STYLES END-->
   </head>
 
@@ -89,6 +94,97 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/pexplotter/colResizable-1.6.min.js"></script>
+    <script src="/js/pexplotter/es6-promise.auto.js"></script>
+    <script src="/js/pexplotter/es6-promise.auto.min.js"></script>
+    <script src="/js/pexplotter/EventEmitter.js"></script>
+    <script src="/js/pexplotter/EventEmitter.min.js"></script>
+    <script src="/js/pexplotter/excanvas.js"></script>
+    <script src="/js/pexplotter/generated.js"></script>
+    <script src="/js/pexplotter/html2canvas.js"></script>
+    <script src="/js/pexplotter/html2canvas.min.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-ar.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-bg.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-bg1251.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-cat.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-cn.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-cs.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-de.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-dk.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-el.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-en.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-fa.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-fi.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-fr.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-he.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-hu.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-is.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-it.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-jp.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-lt.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-nl.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-no.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-pl.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-pt-br.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-pt.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-ro.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-ru.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-sk.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-sp.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-sv.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-tr.js"></script>
+    <script src="/js/pexplotter/i18n/chart.locale-ua.js"></script>
+    <script src="/js/pexplotter/jqPlotter.axis.js"></script>
+    <script src="/js/pexplotter/jqPlotter.common.js"></script>
+    <script src="/js/pexplotter/jqPlotter.constants.js"></script>
+    <script src="/js/pexplotter/jqPlotter.currentpoint.js"></script>
+    <script src="/js/pexplotter/jqPlotter.legend.js"></script>
+    <script src="/js/pexplotter/jqPlotter.main.js"></script>
+    <script src="/js/pexplotter/jqPlotter.main.xyplotter.js"></script>
+    <script src="/js/pexplotter/jqPlotter.menu.js"></script>
+    <script src="/js/pexplotter/jqPlotter.persist.js"></script>
+    <script src="/js/pexplotter/jqPlotter.properties.js"></script>
+    <script src="/js/pexplotter/jqPlotter.ruler.js"></script>
+    <script src="/js/pexplotter/jqPlotter.series.js"></script>
+    <script src="/js/pexplotter/jquery-1.11.1.min.js"></script>
+    <script src="/js/pexplotter/jquery-ui.min.js"></script>
+    <script src="/js/pexplotter/jquery.jqChart.js"></script>
+    <script src="/js/pexplotter/jquery.jqChart.min.js"></script>
+    <script src="/js/pexplotter/jquery.jqRangeSlider.min.js"></script>
+    <script src="/js/pexplotter/jquery.min.js"></script>
+    <script src="/js/pexplotter/jquery.mousewheel.js"></script>
+    <script src="/js/pexplotter/numeral_languages/be-nl.js"></script>
+    <script src="/js/pexplotter/numeral_languages/chs.js"></script>
+    <script src="/js/pexplotter/numeral_languages/cs.js"></script>
+    <script src="/js/pexplotter/numeral_languages/da-dk.js"></script>
+    <script src="/js/pexplotter/numeral_languages/de-ch.js"></script>
+    <script src="/js/pexplotter/numeral_languages/de.js"></script>
+    <script src="/js/pexplotter/numeral_languages/en-gb.js"></script>
+    <script src="/js/pexplotter/numeral_languages/en-us.js"></script>
+    <script src="/js/pexplotter/numeral_languages/es-ES.js"></script>
+    <script src="/js/pexplotter/numeral_languages/es.js"></script>
+    <script src="/js/pexplotter/numeral_languages/et.js"></script>
+    <script src="/js/pexplotter/numeral_languages/fi.js"></script>
+    <script src="/js/pexplotter/numeral_languages/fr-CA.js"></script>
+    <script src="/js/pexplotter/numeral_languages/fr-ch.js"></script>
+    <script src="/js/pexplotter/numeral_languages/fr.js"></script>
+    <script src="/js/pexplotter/numeral_languages/hu.js"></script>
+    <script src="/js/pexplotter/numeral_languages/it.js"></script>
+    <script src="/js/pexplotter/numeral_languages/ja.js"></script>
+    <script src="/js/pexplotter/numeral_languages/nl-nl.js"></script>
+    <script src="/js/pexplotter/numeral_languages/no.js"></script>
+    <script src="/js/pexplotter/numeral_languages/pl.js"></script>
+    <script src="/js/pexplotter/numeral_languages/pt-br.js"></script>
+    <script src="/js/pexplotter/numeral_languages/pt-pt.js"></script>
+    <script src="/js/pexplotter/numeral_languages/ru-UA.js"></script>
+    <script src="/js/pexplotter/numeral_languages/ru.js"></script>
+    <script src="/js/pexplotter/numeral_languages/sk.js"></script>
+    <script src="/js/pexplotter/numeral_languages/th.js"></script>
+    <script src="/js/pexplotter/numeral_languages/tr.js"></script>
+    <script src="/js/pexplotter/numeral_languages/uk-UA.js"></script>
+    <script src="/js/pexplotter/numeral.js"></script>
+    <script src="/js/pexplotter/numeral.min.js"></script>
+    <script src="/js/pexplotter/PEXPlotter.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

@@ -1,0 +1,72 @@
+<script src="/js/pexplotter/generated.js"></script>
+<script src="/js/pexplotter/PEXPlotter.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jquery.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jquery.mousewheel.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jquery.jqChart.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jquery.jqRangeSlider.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.common.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.main.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.properties.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.menu.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.axis.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.series.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.legend.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.constants.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.persist.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.main.xyplotter.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqPlotter.ruler.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jqplotter.currentpoint.js" type="text/javascript"></script>
+<script src="/js/pexplotter/numeral.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/EventEmitter.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/colResizable-1.6.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/es6-promise.auto.min.js" type="text/javascript"></script>
+<script src="/js/pexplotter/html2canvas.min.js" type="text/javascript"></script>
+
+<script>
+
+    var theForm = document.forms['form1'];
+    if (!theForm) {
+        theForm = document.form1;
+    }
+    function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+        }
+    }
+
+    function CreateDancerControls(application) {
+        CreateDancerControlMap(application);
+        application.pageSubscriptionSessionID='/prediktor.dancer.webapp/testpages/jqchart/test/testfontitalic.aspxpagesubscriptions';
+        application.readAndWriteXmlHttpPage='/pexplotter/readAndWriteXml';
+        application.hdaReaderPage='/pexplotter/hdaReader';
+        application.languageReaderPage='/pexplotter/languageReader';
+        application.xmlhttp = getXmlHttp();
+        application.addControl('PEXPlotter1',
+            application.dancerControlMap['PEXPlotter1'] != null
+                ?
+                new JqPlotter(
+                	    document.app.getDancerHtmlElement("PEXPlotter1"),
+                    new Array(
+                    	    new SubscriptionElement("0.0.Y", "", "", "",false,"Worker.Signal1")
+                    )
+                )
+                :
+                null);
+        application.addConnector('Connector1',
+            new DAConnector(
+        	        document.getElementById("Connector1"),
+                "Connector1",
+                1000,
+                "636257427211225289",
+                "Connector1_ctl00"));
+        application.attachControl('Connector1', 'PEXPlotter1');
+        application.attachControl('Connector1', 'Track1');
+        application.initializeConnectors();
+    }
+
+    window.setTimeout("startDancer()", 1000);
+
+</script>
