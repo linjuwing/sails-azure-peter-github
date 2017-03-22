@@ -164,9 +164,8 @@ module.exports = {
 	},
 
 	readAndWriteXml: (req, res) => {
-		//<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	5.9888453191042	192	1490157965102	0.0.Y	Value	0	192</ConnectorData></DancerData>
 		let startingStr = '<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	';
-		let random = Math.floor(Math.random() * 6) + 1;
+		let random = Math.floor(Math.random() * 1000) + 1;
 		let now = Date.now();
 		let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
 		let value = startingStr + random + "	192	" + now + endingStr
