@@ -164,13 +164,25 @@ module.exports = {
 	},
 
 	readAndWriteXml: (req, res) => {
-		let startingStr = '<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	';
-		let random = Math.floor(Math.random() * 1000) + 1;
-		let now = Date.now();
-		let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
-		let value = startingStr + random + "	192	" + now + endingStr
+		DeviceID.findOne({deviceid: 'prediktorI4E'})
+		.limit(1)
+		.sort('updatetime DESC')
+		.then(device => {
+			let startingStr = '<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	';
+			//let random = Math.floor(Math.random() * 1000) + 1;
+			//let now = Date.now();
+			let timestamp = device.updatetime.getTime();
+			let value = device.value;
+			let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
+			let daupdate = startingStr + value + "	192	" + timestamp + endingStr
 
-		res.type('text/xml');
-		return res.ok(value);
+			res.type('text/xml');
+			return res.ok(daupdate);
+		})
+		.catch(err => {
+			sails.log.error("Error finding DeviceID: ", err);
+			return res.negotiate(err);
+		});
+
 	}
 };
