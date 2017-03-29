@@ -64,6 +64,9 @@ module.exports.connections = {
 		password: 'U04KWGfLEKIOlL1VJhxThiQ9SX9EaN1czCYTpT6fGuuKpeJ7oFKPkKL32J2jWlSsLQnugTMkbrEUHfjEqWHbaQ==', //optional
 		database: 'AssetRegistry', //optional
 		ssl: true,
+
+		//url: 'mongodb://prediktori4edocumentdb:U04KWGfLEKIOlL1VJhxThiQ9SX9EaN1czCYTpT6fGuuKpeJ7oFKPkKL32J2jWlSsLQnugTMkbrEUHfjEqWHbaQ==@prediktori4edocumentdb.documents.azure.com:10250/AssetRegistry?ssl=true',
+
 	},
 
 	/***************************************************************************

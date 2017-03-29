@@ -22,4 +22,10 @@ module.exports = {
 	  migrate: 'safe'
   },
 
+	hookTimeout: 100000,
+
+	log: {
+	  level: "debug"
+	}
+
 };

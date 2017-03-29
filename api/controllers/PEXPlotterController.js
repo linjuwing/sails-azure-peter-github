@@ -1,6 +1,19 @@
 /**
  * Created by peter on 22/03/2017.
  */
+
+// var MongoClient = require('mongodb').MongoClient;
+// var assert = require('assert');
+// var ObjectId = require('mongodb').ObjectID;
+// var url = 'mongodb://prediktori4edocumentdb:U04KWGfLEKIOlL1VJhxThiQ9SX9EaN1czCYTpT6fGuuKpeJ7oFKPkKL32J2jWlSsLQnugTMkbrEUHfjEqWHbaQ==@prediktori4edocumentdb.documents.azure.com:10250/AssetRegistry?ssl=true';
+//
+//
+
+let MongoClient = require('mongodb').MongoClient;
+let assert = require('assert');
+let url = 'mongodb://prediktori4edocumentdb:U04KWGfLEKIOlL1VJhxThiQ9SX9EaN1czCYTpT6fGuuKpeJ7oFKPkKL32J2jWlSsLQnugTMkbrEUHfjEqWHbaQ==@prediktori4edocumentdb.documents.azure.com:10250/AssetRegistry?ssl=true';
+
+
 module.exports = {
 	pexplotter: (req, res) => {
 
@@ -164,18 +177,39 @@ module.exports = {
 	},
 
 	readAndWriteXml: (req, res) => {
-		DeviceID.findOne({deviceid: 'prediktorI4E'})
-		.limit(1)
-		.sort('updatetime DESC')
+
+		new Promise((resolve, reject) => {
+			MongoClient.connect(url, function (err, db) {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(db);
+				}
+			});
+		})
+		.then(db => {
+			var cursor =db.collection('Asset01').find({deviceid: 'prediktorI4E'})
+			.sort({updatetime:-1}).limit(1);
+			return new Promise((resolve, reject) => {
+				cursor.each(function(err, device) {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(device);
+					}
+				});
+			});
+		})
 		.then(device => {
 			let startingStr = '<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	';
 			//let random = Math.floor(Math.random() * 1000) + 1;
 			//let now = Date.now();
-			let timestamp = device.updatetime.getTime();
+			let timestamp = new Date(device.updatetime).getTime();
 			let value = device.value;
 			let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
 			let daupdate = startingStr + value + "	192	" + timestamp + endingStr
 
+			//db.close();
 			res.type('text/xml');
 			return res.ok(daupdate);
 		})
@@ -183,6 +217,32 @@ module.exports = {
 			sails.log.error("Error finding DeviceID: ", err);
 			return res.negotiate(err);
 		});
+
+
+		// MongoClient.connect(url, function(err, db) {
+		// 	findDeviceID(db);
+		// });
+
+		//DeviceID.findOne({deviceid: 'prediktorI4E'})
+		// asset01.find()
+		// // .limit(1)
+		// // .sort('updatetime DESC')
+		// .then(device => {
+		// 	let startingStr = '<DancerData><ConnectorDataNormalized>false</ConnectorDataNormalized><ConnectorData>1	Connector1	false	true	1	10	636257547651023655	8	0	';
+		// 	//let random = Math.floor(Math.random() * 1000) + 1;
+		// 	//let now = Date.now();
+		// 	let timestamp = device.updatetime.getTime();
+		// 	let value = device.value;
+		// 	let endingStr = '	0.0.Y	Value	0	192</ConnectorData></DancerData>';
+		// 	let daupdate = startingStr + value + "	192	" + timestamp + endingStr
+		//
+		// 	res.type('text/xml');
+		// 	return res.ok(daupdate);
+		// })
+		// .catch(err => {
+		// 	sails.log.error("Error finding DeviceID: ", err);
+		// 	return res.negotiate(err);
+		// });
 
 	}
 };
